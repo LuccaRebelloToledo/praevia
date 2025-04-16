@@ -9,6 +9,7 @@
 - [TypeScript](https://www.typescriptlang.org/) – Strong typing and readability
 - [MikroORM](https://mikro-orm.io/) – Lightweight and powerful ORM (PostgreSQL)
 - [PostgreSQL](https://www.postgresql.org/) – A reliable and secure relational database
+- [Biome](https://biomejs.dev/) - Biome is a fast formatter for TypeScript that scores 97% compatibility with Prettier, saving CI and developer time.
 
 ## ✨ About the Project
 

@@ -3,7 +3,8 @@
 	"vcs": {
 		"enabled": false,
 		"clientKind": "git",
-		"useIgnoreFile": false
+		"useIgnoreFile": true,
+		"defaultBranch": "main"
 	},
 	"files": {
 		"ignoreUnknown": false,
@@ -11,7 +12,14 @@
 	},
 	"formatter": {
 		"enabled": true,
-		"indentStyle": "tab"
+    "useEditorconfig": true,
+    "formatWithErrors": false,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineEnding": "lf",
+    "lineWidth": 80,
+    "attributePosition": "auto",
+    "bracketSpacing": true
 	},
 	"organizeImports": {
 		"enabled": true
@@ -24,7 +32,20 @@
 	},
 	"javascript": {
 		"formatter": {
-			"quoteStyle": "double"
+			"enabled": true,
+			"jsxQuoteStyle": "double",
+      "quoteProperties": "asNeeded",
+      "trailingCommas": "all",
+      "semicolons": "always",
+      "arrowParentheses": "always",
+      "bracketSameLine": false,
+      "quoteStyle": "single",
+			"indentStyle": "space",
+			"indentWidth": 2,
+			"lineEnding": "lf",
+			"lineWidth": 80,
+			"attributePosition": "auto",
+			"bracketSpacing": true
 		}
 	}
 }
