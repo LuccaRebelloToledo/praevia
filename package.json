@@ -1,0 +1,34 @@
+{
+  "private": true,
+  "name": "praevia",
+  "version": "1.0.0",
+  "description": "Praevia is an authentication and authorization system built with a focus on security, privacy, and software craftsmanship.",
+  "homepage": "https://github.com/LuccaRebelloToledo/praevia#readme",
+  "bugs": {
+    "url": "https://github.com/LuccaRebelloToledo/praevia/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LuccaRebelloToledo/praevia.git"
+  },
+  "keywords": [
+    "praevia",
+    "authentication",
+    "authorization",
+    "jwt",
+    "refresh-token",
+    "nestjs",
+    "typescript",
+    "mikroorm",
+    "postgresql",
+    "clean-architecture",
+    "security",
+    "lgpd",
+    "identity-management"
+  ],
+  "license": "ISC",
+  "author": "LuccaRebelloToledo",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {}
+}
