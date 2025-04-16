@@ -30,5 +30,14 @@
   "author": "LuccaRebelloToledo",
   "type": "commonjs",
   "main": "index.js",
-  "scripts": {}
+  "scripts": {
+    "prepare": "husky || true",
+    "lint": "npx @biomejs/biome check --write ./src"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "git-commit-msg-linter": "^5.0.8",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.1"
+  }
 }
