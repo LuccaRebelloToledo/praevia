@@ -3,7 +3,9 @@ import 'dotenv/config';
 import path from 'node:path';
 import { env } from 'node:process';
 
+import { Migrator } from '@mikro-orm/migrations';
 import { PostgreSqlDriver, defineConfig } from '@mikro-orm/postgresql';
+import { SeedManager } from '@mikro-orm/seeder';
 
 export default defineConfig({
   driver: PostgreSqlDriver,
@@ -16,14 +18,15 @@ export default defineConfig({
   entitiesTs: ['src/domain/**/*.ts'],
   migrations: {
     path: path.join(__dirname, './migrations'),
-    pathTs: 'src/infrastructure/db/migrations',
+    pathTs: 'src/infrastructure/database/migrations',
     emit: 'ts',
     transactional: true,
   },
   seeder: {
     path: path.join(__dirname, './seeders'),
-    pathTs: 'src/infrastructure/db/seeders',
+    pathTs: 'src/infrastructure/database/seeders',
     emit: 'ts',
   },
   debug: env.NODE_ENV !== 'production',
+  extensions: [Migrator, SeedManager],
 });
