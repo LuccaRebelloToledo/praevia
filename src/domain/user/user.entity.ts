@@ -62,13 +62,6 @@ export class User extends BaseEntity {
   role?: Role;
 
   @Property({
-    name: 'role_id',
-    length: 21,
-    nullable: true,
-  })
-  roleId?: string;
-
-  @Property({
     name: 'last_login_date_time',
     nullable: true,
   })

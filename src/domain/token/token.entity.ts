@@ -36,11 +36,4 @@ export class Token extends BaseEntity {
     joinColumn: 'user_id',
   })
   user?: User;
-
-  @Property({
-    name: 'user_id',
-    length: 21,
-    nullable: true,
-  })
-  userId?: string;
 }
