@@ -8,7 +8,6 @@ import {
 } from '@mikro-orm/core';
 
 import { BaseEntity } from '@domain/base.entity';
-
 import { Permission } from '@domain/permission/permission.entity';
 import { User } from '@domain/user/user.entity';
 
