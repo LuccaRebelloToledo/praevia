@@ -1,7 +1,5 @@
 {
-  "namespaces": [
-    "public"
-  ],
+  "namespaces": ["public"],
   "name": "public",
   "tables": [
     {
@@ -71,9 +69,7 @@
       "schema": "public",
       "indexes": [
         {
-          "columnNames": [
-            "key"
-          ],
+          "columnNames": ["key"],
           "composite": false,
           "keyName": "permissions_key_unique",
           "constraint": true,
@@ -82,9 +78,7 @@
         },
         {
           "keyName": "permissions_pkey",
-          "columnNames": [
-            "id"
-          ],
+          "columnNames": ["id"],
           "composite": false,
           "constraint": true,
           "primary": true,
@@ -162,9 +156,7 @@
       "schema": "public",
       "indexes": [
         {
-          "columnNames": [
-            "key"
-          ],
+          "columnNames": ["key"],
           "composite": false,
           "keyName": "roles_key_unique",
           "constraint": true,
@@ -173,9 +165,7 @@
         },
         {
           "keyName": "roles_pkey",
-          "columnNames": [
-            "id"
-          ],
+          "columnNames": ["id"],
           "composite": false,
           "constraint": true,
           "primary": true,
@@ -214,10 +204,7 @@
       "indexes": [
         {
           "keyName": "role_permissions_pkey",
-          "columnNames": [
-            "role_id",
-            "permission_id"
-          ],
+          "columnNames": ["role_id", "permission_id"],
           "composite": true,
           "constraint": true,
           "primary": true,
@@ -228,26 +215,18 @@
       "foreignKeys": {
         "role_permissions_role_id_foreign": {
           "constraintName": "role_permissions_role_id_foreign",
-          "columnNames": [
-            "role_id"
-          ],
+          "columnNames": ["role_id"],
           "localTableName": "public.role_permissions",
-          "referencedColumnNames": [
-            "id"
-          ],
+          "referencedColumnNames": ["id"],
           "referencedTableName": "public.roles",
           "deleteRule": "cascade",
           "updateRule": "cascade"
         },
         "role_permissions_permission_id_foreign": {
           "constraintName": "role_permissions_permission_id_foreign",
-          "columnNames": [
-            "permission_id"
-          ],
+          "columnNames": ["permission_id"],
           "localTableName": "public.role_permissions",
-          "referencedColumnNames": [
-            "id"
-          ],
+          "referencedColumnNames": ["id"],
           "referencedTableName": "public.permissions",
           "deleteRule": "cascade",
           "updateRule": "cascade"
@@ -402,9 +381,7 @@
       "schema": "public",
       "indexes": [
         {
-          "columnNames": [
-            "email"
-          ],
+          "columnNames": ["email"],
           "composite": false,
           "keyName": "users_email_unique",
           "constraint": true,
@@ -413,9 +390,7 @@
         },
         {
           "keyName": "users_pkey",
-          "columnNames": [
-            "id"
-          ],
+          "columnNames": ["id"],
           "composite": false,
           "constraint": true,
           "primary": true,
@@ -426,13 +401,9 @@
       "foreignKeys": {
         "users_role_id_foreign": {
           "constraintName": "users_role_id_foreign",
-          "columnNames": [
-            "role_id"
-          ],
+          "columnNames": ["role_id"],
           "localTableName": "public.users",
-          "referencedColumnNames": [
-            "id"
-          ],
+          "referencedColumnNames": ["id"],
           "referencedTableName": "public.roles",
           "deleteRule": "set null",
           "updateRule": "cascade"
@@ -537,9 +508,7 @@
       "schema": "public",
       "indexes": [
         {
-          "columnNames": [
-            "token"
-          ],
+          "columnNames": ["token"],
           "composite": false,
           "keyName": "tokens_token_index",
           "constraint": false,
@@ -548,9 +517,7 @@
         },
         {
           "keyName": "tokens_pkey",
-          "columnNames": [
-            "id"
-          ],
+          "columnNames": ["id"],
           "composite": false,
           "constraint": true,
           "primary": true,
@@ -561,13 +528,9 @@
       "foreignKeys": {
         "tokens_user_id_foreign": {
           "constraintName": "tokens_user_id_foreign",
-          "columnNames": [
-            "user_id"
-          ],
+          "columnNames": ["user_id"],
           "localTableName": "public.tokens",
-          "referencedColumnNames": [
-            "id"
-          ],
+          "referencedColumnNames": ["id"],
           "referencedTableName": "public.users",
           "deleteRule": "set null",
           "updateRule": "cascade"
