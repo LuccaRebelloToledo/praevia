@@ -41,6 +41,7 @@ export class User extends BaseEntity {
   @Property({
     name: 'password',
     length: 255,
+    hidden: true,
   })
   password: string;
 
