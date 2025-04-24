@@ -31,6 +31,10 @@
       "style": {
         "noNonNullAssertion": "off",
         "useImportType": "off"
+      },
+      "correctness": {
+        "noUnusedImports": "error",
+        "noUnusedVariables": "error"
       }
     }
   },

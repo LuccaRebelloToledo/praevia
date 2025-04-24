@@ -22,7 +22,9 @@ export class DatabaseHealthIndicatorUseCase {
 
       return indicator.up();
     } catch (error) {
-      return indicator.down('Failed to connect to the database');
+      return indicator.down(
+        `Failed to connect to the database ${error.message}`,
+      );
     }
   }
 }

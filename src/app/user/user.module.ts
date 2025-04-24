@@ -8,7 +8,7 @@ import { CryptoModule } from '@shared/crypto/crypto.module';
 
 import { User } from '@domain/user/user.entity';
 import { UserRepositoryImpl } from '@infrastructure/repositories/user.repository.impl';
-import { MikroOrmModule, getRepositoryToken } from '@mikro-orm/nestjs';
+import { MikroOrmModule } from '@mikro-orm/nestjs';
 
 import { CheckUserExistsByEmailUseCase } from './use-cases/check-user-exists-by-email.use-case';
 import { CreateUserUseCase } from './use-cases/create-user.use-case';

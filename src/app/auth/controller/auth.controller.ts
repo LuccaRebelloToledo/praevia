@@ -35,7 +35,7 @@ export class AuthController {
   @Post('sign-in')
   @Public()
   @UseGuards(LocalAuthGuard)
-  async signIn(@Request() request: FastifyRequest): Promise<void> {
+  async signIn(@Request() _request: FastifyRequest): Promise<void> {
     // Implement your logic here
   }
 }

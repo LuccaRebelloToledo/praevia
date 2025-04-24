@@ -1,7 +1,3 @@
-import { HttpException, HttpStatus } from '@nestjs/common';
-
-import dayjs from 'dayjs';
-
 import type { ErrorCode } from '@shared/errors/error-codes.enum';
 
 import { ErrorMessages } from '@shared/errors/error-messages';
