@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger';
 import {
   IsEmail,
   IsLocale,
@@ -12,14 +13,17 @@ export class SignUpUsersDto {
   @IsString()
   @IsNotEmpty()
   @MinLength(3)
+  @ApiProperty()
   firstName: string;
 
   @IsString()
   @IsNotEmpty()
   @MinLength(3)
+  @ApiProperty()
   lastName: string;
 
   @IsEmail()
+  @ApiProperty()
   email: string;
 
   @IsStrongPassword({
@@ -29,16 +33,18 @@ export class SignUpUsersDto {
     minNumbers: 1,
     minSymbols: 1,
   })
+  @ApiProperty()
   password: string;
 
-  @IsString()
   @IsLocale({
     message: 'Invalid locale format (e.g., en-US)',
   })
+  @ApiProperty()
   locale: string;
 
   @IsTimeZone({
     message: 'Invalid time zone format (e.g., America/Sao_Paulo)',
   })
+  @ApiProperty()
   timeZone: string;
 }

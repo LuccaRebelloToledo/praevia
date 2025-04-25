@@ -8,12 +8,15 @@ import {
   type NestFastifyApplication,
 } from '@nestjs/platform-fastify';
 
+import { AppModule } from './app.module';
+
 import compression from '@fastify/compress';
 import helmet from '@fastify/helmet';
 
-import { AppModule } from './app.module';
-
 import { GlobalHttpExceptionFilter } from '@shared/filters/http-exception.filter';
+
+import swaggerConfig from '@config/swagger.config';
+import { SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
@@ -52,6 +55,10 @@ async function bootstrap() {
   });
 
   app.useGlobalFilters(new GlobalHttpExceptionFilter());
+
+  const documentFactory = () =>
+    SwaggerModule.createDocument(app, swaggerConfig);
+  SwaggerModule.setup('swagger', app, documentFactory);
 
   const PORT = configService.get<number>('PORT') || 3000;
 

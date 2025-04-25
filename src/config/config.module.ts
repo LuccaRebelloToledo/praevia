@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 
 import { ConfigModule as NestConfigModule } from '@nestjs/config';
 
-import environmentVariablesSchema from './environments.validation';
+import environmentVariablesSchema from './environments.config';
 
 @Module({
   imports: [

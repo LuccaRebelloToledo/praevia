@@ -1,4 +1,4 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 
 import { UserRepositoryImpl } from '@infrastructure/repositories/user.repository.impl';
 
@@ -15,7 +15,7 @@ export class FindUserByIdUseCase {
     const user = await this.userRepo.findOneById(id);
 
     if (!user)
-      throw new UnauthorizedException(
+      throw new NotFoundException(
         buildHttpErrorResponse(ErrorCode.USER_NOT_FOUND),
       );
 
