@@ -67,4 +67,8 @@ export class User extends BaseEntity {
     nullable: true,
   })
   lastLoginDateTime?: Date;
+
+  get fullName(): string {
+    return `${this.firstName} ${this.lastName}`;
+  }
 }

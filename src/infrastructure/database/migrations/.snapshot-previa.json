@@ -1,7 +1,139 @@
 {
-  "namespaces": ["public"],
+  "namespaces": [
+    "public"
+  ],
   "name": "public",
   "tables": [
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "varchar(21)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 21,
+          "mappedType": "string"
+        },
+        "created_date_time": {
+          "name": "created_date_time",
+          "type": "timestamptz",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "last_modified_date_time": {
+          "name": "last_modified_date_time",
+          "type": "timestamptz",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "deleted_date_time": {
+          "name": "deleted_date_time",
+          "type": "timestamptz",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "performed_by_id": {
+          "name": "performed_by_id",
+          "type": "varchar(50)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "length": 50,
+          "mappedType": "string"
+        },
+        "action": {
+          "name": "action",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 255,
+          "mappedType": "string"
+        },
+        "affected_resource_id": {
+          "name": "affected_resource_id",
+          "type": "varchar(50)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "length": 50,
+          "mappedType": "string"
+        },
+        "resource": {
+          "name": "resource",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 255,
+          "mappedType": "string"
+        },
+        "ip_address": {
+          "name": "ip_address",
+          "type": "varchar(100)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 100,
+          "mappedType": "string"
+        },
+        "user_agent": {
+          "name": "user_agent",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 255,
+          "mappedType": "string"
+        },
+        "metadata": {
+          "name": "metadata",
+          "type": "jsonb",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "json"
+        }
+      },
+      "name": "audit_logs",
+      "schema": "public",
+      "indexes": [
+        {
+          "keyName": "audit_logs_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "constraint": true,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {},
+      "nativeEnums": {}
+    },
     {
       "columns": {
         "id": {
@@ -69,7 +201,9 @@
       "schema": "public",
       "indexes": [
         {
-          "columnNames": ["key"],
+          "columnNames": [
+            "key"
+          ],
           "composite": false,
           "keyName": "permissions_key_unique",
           "constraint": true,
@@ -78,7 +212,9 @@
         },
         {
           "keyName": "permissions_pkey",
-          "columnNames": ["id"],
+          "columnNames": [
+            "id"
+          ],
           "composite": false,
           "constraint": true,
           "primary": true,
@@ -156,7 +292,9 @@
       "schema": "public",
       "indexes": [
         {
-          "columnNames": ["key"],
+          "columnNames": [
+            "key"
+          ],
           "composite": false,
           "keyName": "roles_key_unique",
           "constraint": true,
@@ -165,7 +303,9 @@
         },
         {
           "keyName": "roles_pkey",
-          "columnNames": ["id"],
+          "columnNames": [
+            "id"
+          ],
           "composite": false,
           "constraint": true,
           "primary": true,
@@ -184,7 +324,7 @@
           "unsigned": false,
           "autoincrement": false,
           "primary": false,
-          "nullable": false,
+          "nullable": true,
           "length": 21,
           "mappedType": "string"
         },
@@ -194,7 +334,7 @@
           "unsigned": false,
           "autoincrement": false,
           "primary": false,
-          "nullable": false,
+          "nullable": true,
           "length": 21,
           "mappedType": "string"
         }
@@ -204,7 +344,10 @@
       "indexes": [
         {
           "keyName": "role_permissions_pkey",
-          "columnNames": ["role_id", "permission_id"],
+          "columnNames": [
+            "role_id",
+            "permission_id"
+          ],
           "composite": true,
           "constraint": true,
           "primary": true,
@@ -215,18 +358,26 @@
       "foreignKeys": {
         "role_permissions_role_id_foreign": {
           "constraintName": "role_permissions_role_id_foreign",
-          "columnNames": ["role_id"],
+          "columnNames": [
+            "role_id"
+          ],
           "localTableName": "public.role_permissions",
-          "referencedColumnNames": ["id"],
+          "referencedColumnNames": [
+            "id"
+          ],
           "referencedTableName": "public.roles",
           "deleteRule": "cascade",
           "updateRule": "cascade"
         },
         "role_permissions_permission_id_foreign": {
           "constraintName": "role_permissions_permission_id_foreign",
-          "columnNames": ["permission_id"],
+          "columnNames": [
+            "permission_id"
+          ],
           "localTableName": "public.role_permissions",
-          "referencedColumnNames": ["id"],
+          "referencedColumnNames": [
+            "id"
+          ],
           "referencedTableName": "public.permissions",
           "deleteRule": "cascade",
           "updateRule": "cascade"
@@ -381,7 +532,9 @@
       "schema": "public",
       "indexes": [
         {
-          "columnNames": ["email"],
+          "columnNames": [
+            "email"
+          ],
           "composite": false,
           "keyName": "users_email_unique",
           "constraint": true,
@@ -390,7 +543,9 @@
         },
         {
           "keyName": "users_pkey",
-          "columnNames": ["id"],
+          "columnNames": [
+            "id"
+          ],
           "composite": false,
           "constraint": true,
           "primary": true,
@@ -401,9 +556,13 @@
       "foreignKeys": {
         "users_role_id_foreign": {
           "constraintName": "users_role_id_foreign",
-          "columnNames": ["role_id"],
+          "columnNames": [
+            "role_id"
+          ],
           "localTableName": "public.users",
-          "referencedColumnNames": ["id"],
+          "referencedColumnNames": [
+            "id"
+          ],
           "referencedTableName": "public.roles",
           "deleteRule": "set null",
           "updateRule": "cascade"
@@ -508,7 +667,9 @@
       "schema": "public",
       "indexes": [
         {
-          "columnNames": ["token"],
+          "columnNames": [
+            "token"
+          ],
           "composite": false,
           "keyName": "tokens_token_index",
           "constraint": false,
@@ -517,7 +678,9 @@
         },
         {
           "keyName": "tokens_pkey",
-          "columnNames": ["id"],
+          "columnNames": [
+            "id"
+          ],
           "composite": false,
           "constraint": true,
           "primary": true,
@@ -528,9 +691,13 @@
       "foreignKeys": {
         "tokens_user_id_foreign": {
           "constraintName": "tokens_user_id_foreign",
-          "columnNames": ["user_id"],
+          "columnNames": [
+            "user_id"
+          ],
           "localTableName": "public.tokens",
-          "referencedColumnNames": ["id"],
+          "referencedColumnNames": [
+            "id"
+          ],
           "referencedTableName": "public.users",
           "deleteRule": "set null",
           "updateRule": "cascade"

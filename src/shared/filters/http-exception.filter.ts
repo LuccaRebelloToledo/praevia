@@ -19,8 +19,8 @@ export class GlobalHttpExceptionFilter implements ExceptionFilter {
     Logger.error(exception);
 
     const ctx = host.switchToHttp();
-    const response = ctx.getResponse<FastifyReply>();
     const request = ctx.getRequest<FastifyRequest>();
+    const response = ctx.getResponse<FastifyReply>();
 
     let status = HttpStatus.INTERNAL_SERVER_ERROR;
     let code = ErrorCode.INTERNAL_SERVER_ERROR;

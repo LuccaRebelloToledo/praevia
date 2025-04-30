@@ -11,6 +11,8 @@ export const ErrorMessages: Record<ErrorCode, string> = {
     'The user was not found. Please check the provided information and try again.',
   [ErrorCode.USER_INVALID_EMAIL_OR_ALREADY_EXISTS]:
     'The email provided is either invalid or already exists. Please use a different email address.',
+  [ErrorCode.ROLE_NOT_FOUND]:
+    'The role was not found. Please check the provided information and try again.',
   [ErrorCode.INTERNAL_SERVER_ERROR]:
     'An internal server error occurred. Please try again later.',
 } as const;

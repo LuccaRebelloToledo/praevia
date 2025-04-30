@@ -13,6 +13,9 @@ import { AppModule } from './app.module';
 import compression from '@fastify/compress';
 import helmet from '@fastify/helmet';
 
+import fastifyPassport from '@fastify/passport';
+import fastifySecureSession from '@fastify/secure-session';
+
 import { GlobalHttpExceptionFilter } from '@shared/filters/http-exception.filter';
 
 import swaggerConfig from '@config/swagger.config';
@@ -45,6 +48,21 @@ async function bootstrap() {
   });
 
   await app.register(compression);
+
+  await app.register(fastifySecureSession, {
+    key: Buffer.from(configService.get<string>('SESSION_KEY')!, 'utf-8'),
+    secret: configService.get<string>('SESSION_SECRET')!,
+    cookieName: 'refreshToken',
+    cookie: {
+      secure: configService.get<string>('NODE_ENV') === 'production',
+      httpOnly: true,
+      maxAge: 86400,
+      sameSite: 'lax',
+    },
+  });
+
+  await app.register(fastifyPassport.initialize());
+  await app.register(fastifyPassport.secureSession());
 
   app.setGlobalPrefix('/api');
 

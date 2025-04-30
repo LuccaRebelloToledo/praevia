@@ -1,14 +1,13 @@
 import { Module } from '@nestjs/common';
 
-import { APP_GUARD } from '@nestjs/core';
-import { GlobalAuthGuard } from '@shared/guards/app.guard';
-import { PermissionsGuard } from '@shared/guards/permissions.guard';
-
-import { CryptoModule } from '@shared/crypto/crypto.module';
+import { MikroOrmModule } from '@mikro-orm/nestjs';
 
 import { User } from '@domain/user/user.entity';
+
+import { AuditModule } from '@app/audit-log/audit.module';
+import { CryptoModule } from '@shared/crypto/crypto.module';
+
 import { UserRepositoryImpl } from '@infrastructure/repositories/user.repository.impl';
-import { MikroOrmModule } from '@mikro-orm/nestjs';
 
 import { CheckUserExistsByEmailUseCase } from './use-cases/check-user-exists-by-email.use-case';
 import { CreateUserUseCase } from './use-cases/create-user.use-case';
@@ -16,7 +15,7 @@ import { FindUserByIdUseCase } from './use-cases/find-user-by-id.use-case';
 import { ValidateUserUseCase } from './use-cases/validate-user.use-case';
 
 @Module({
-  imports: [MikroOrmModule.forFeature([User]), CryptoModule],
+  imports: [MikroOrmModule.forFeature([User]), CryptoModule, AuditModule],
   controllers: [],
   providers: [
     FindUserByIdUseCase,
@@ -24,14 +23,6 @@ import { ValidateUserUseCase } from './use-cases/validate-user.use-case';
     CheckUserExistsByEmailUseCase,
     CreateUserUseCase,
     UserRepositoryImpl,
-    {
-      provide: APP_GUARD,
-      useClass: GlobalAuthGuard,
-    },
-    {
-      provide: APP_GUARD,
-      useClass: PermissionsGuard,
-    },
   ],
   exports: [
     FindUserByIdUseCase,

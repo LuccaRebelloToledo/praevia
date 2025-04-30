@@ -1,6 +1,6 @@
 import { Migration } from '@mikro-orm/migrations';
 
-export class Migration20250423184451 extends Migration {
+export class Migration20250428135423 extends Migration {
   override async up(): Promise<void> {
     this.addSql(
       `create table "permissions" ("id" varchar(21) not null, "created_date_time" timestamptz not null, "last_modified_date_time" timestamptz not null, "deleted_date_time" timestamptz null, "key" varchar(50) not null, "display_name" varchar(255) not null, constraint "permissions_pkey" primary key ("id"));`,
@@ -17,7 +17,7 @@ export class Migration20250423184451 extends Migration {
     );
 
     this.addSql(
-      `create table "role_permissions" ("role_id" varchar(21) not null, "permission_id" varchar(21) not null, constraint "role_permissions_pkey" primary key ("role_id", "permission_id"));`,
+      `create table "role_permissions" ("role_id" varchar(21) null, "permission_id" varchar(21) null, constraint "role_permissions_pkey" primary key ("role_id", "permission_id"));`,
     );
 
     this.addSql(

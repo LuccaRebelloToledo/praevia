@@ -1,5 +1,7 @@
 import { Injectable } from '@nestjs/common';
 
+import { FastifyRequest } from 'fastify';
+
 import { PassportStrategy } from '@nestjs/passport';
 import { Strategy } from 'passport-local';
 
@@ -13,10 +15,23 @@ export default class LocalStrategy extends PassportStrategy(Strategy) {
     super({
       usernameField: 'email',
       passwordField: 'password',
+      passReqToCallback: true,
     });
   }
 
-  async validate(email: string, password: string): Promise<User> {
-    return await this.validateUserUseCase.execute({ email, password });
+  async validate(
+    request: FastifyRequest,
+    email: string,
+    password: string,
+  ): Promise<User> {
+    const ipAddress = request.ip;
+    const userAgent = request.headers['user-agent'] || 'unknown';
+
+    return await this.validateUserUseCase.execute({
+      email,
+      password,
+      ipAddress,
+      userAgent,
+    });
   }
 }

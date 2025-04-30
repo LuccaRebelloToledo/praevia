@@ -9,6 +9,7 @@ import {
 
 import { BaseEntity } from '@domain/base.entity';
 import { Permission } from '@domain/permission/permission.entity';
+import { RolePermission } from '@domain/role-permission/role-permission.entity';
 import { User } from '@domain/user/user.entity';
 
 @Entity({
@@ -33,9 +34,7 @@ export class Role extends BaseEntity {
     {
       owner: true,
       cascade: [Cascade.PERSIST, Cascade.REMOVE],
-      pivotTable: 'role_permissions',
-      joinColumn: 'role_id',
-      inverseJoinColumn: 'permission_id',
+      pivotEntity: () => RolePermission,
     },
   )
   permissions: Collection<Permission> = new Collection<Permission>(this);
